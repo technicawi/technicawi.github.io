@@ -3,120 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Page — technicawi</title>
-  <style>
-    :root {
-      --bg: #0f1419;
-      --surface: #1a2332;
-      --text: #e7ecf3;
-      --muted: #8b9cb3;
-      --accent: #3d9eff;
-      --ok: #34d399;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      line-height: 1.6;
-    }
-
-    main {
-      background: var(--surface);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      padding: 2rem 2.5rem;
-      max-width: 32rem;
-      width: 100%;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-    }
-
-    .badge {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--ok);
-      background: rgba(52, 211, 153, 0.12);
-      border: 1px solid rgba(52, 211, 153, 0.35);
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      margin-bottom: 1rem;
-    }
-
-    h1 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      color: var(--muted);
-      margin-bottom: 1.25rem;
-    }
-
-    dl {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 0.35rem 1rem;
-      font-size: 0.9rem;
-    }
-
-    dt {
-      color: var(--muted);
-    }
-
-    dd {
-      font-family: ui-monospace, "Cascadia Code", monospace;
-      color: var(--accent);
-    }
-
-    footer {
-      margin-top: 1.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-  </style>
+  <title>welcome back</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main>
-    <span class="badge">Test</span>
-    <h1>technicawi — test page</h1>
-    <p>
-      This is a placeholder while the site is under development.
-      The future, the past, and some present.
-    </p>
-    <dl>
-      <dt>Status</dt>
-      <dd>OK</dd>
-      <dt>Environment</dt>
-      <dd id="env">—</dd>
-      <dt>Loaded</dt>
-      <dd id="loaded">—</dd>
-    </dl>
-    <footer>technicawi.github.io</footer>
-  </main>
-  <script>
-    document.getElementById("env").textContent =
-      location.hostname === "localhost" || location.hostname === "127.0.0.1"
-        ? "local"
-        : "production";
-    document.getElementById("loaded").textContent =
-      new Date().toLocaleString();
-  </script>
+   <h3>Good evening humans and aliens</h3>
+  <a href="foundry.html">FOUNDRY</a> <br>
+  <a href="slither.html">SLITHER</a>
+  
 </body>
 </html>

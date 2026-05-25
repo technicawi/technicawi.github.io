@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slither</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+   <div class="container">
+
+  <h1>Slither — Smart Contract Static Analyzer</h1>
+
+  <div class="card">
+    <h2>What is Slither?</h2>
+
+    <p>
+      Slither is a static analysis framework for Solidity smart contracts created by
+      <strong>Trail of Bits</strong>.
+    </p>
+
+    <p>
+      It analyzes Solidity source code without executing it and detects:
+    </p>
+
+    <ul>
+      <li>Reentrancy</li>
+      <li>Access control flaws</li>
+      <li>Unchecked return values</li>
+      <li>Dangerous delegatecalls</li>
+      <li>Storage collisions</li>
+      <li>Upgradeable proxy issues</li>
+      <li>Uninitialized state variables</li>
+      <li>Incorrect inheritance usage</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Install Methods</h2>
+
+    <h3>1. Tool Installation (Recommended)</h3>
+
+    <pre><code>curl -LsSf https://astral.sh/uv/install.sh | sh
+
+uv tool install slither-analyzer</code></pre>
+
+    <p>
+      Installs Slither in an isolated environment and exposes the
+      <code>slither</code> command globally.
+    </p>
+
+    <div class="good">
+      Best for auditors, bug bounty hunters, and offensive security workflows.
+    </div>
+
+    <h3>2. Full Python Environment Installation</h3>
+
+    <pre><code>python -m venv venv
+source venv/bin/activate
+
+pip install slither-analyzer</code></pre>
+
+    <p>
+      Required if writing custom plugins, detectors, or importing Slither into Python scripts.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Basic Usage</h2>
+
+    <pre><code>slither .
+
+slither contracts/Token.sol</code></pre>
+
+    <p>
+      Slither automatically compiles contracts using:
+    </p>
+
+    <ul>
+      <li>Foundry</li>
+      <li>Hardhat</li>
+      <li>Truffle</li>
+      <li>solc</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Common Commands</h2>
+
+    <h3>List Detectors</h3>
+
+    <pre><code>slither --list-detectors</code></pre>
+
+    <h3>Generate Call Graph</h3>
+
+    <pre><code>slither . --print call-graph</code></pre>
+
+    <h3>Generate CFG (Control Flow Graph)</h3>
+
+    <pre><code>slither . --print cfg</code></pre>
+
+    <h3>Inheritance Graph</h3>
+
+    <pre><code>slither . --print inheritance-graph</code></pre>
+
+    <h3>Function Summary</h3>
+
+    <pre><code>slither . --print function-summary</code></pre>
+  </div>
+
+  <div class="card">
+    <h2>Important Detectors</h2>
+
+    <ul>
+      <li><code>reentrancy-eth</code></li>
+      <li><code>arbitrary-send-eth</code></li>
+      <li><code>delegatecall-loop</code></li>
+      <li><code>unchecked-transfer</code></li>
+      <li><code>tx-origin</code></li>
+      <li><code>suicidal</code></li>
+      <li><code>uninitialized-storage</code></li>
+      <li><code>shadowing-state</code></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Example Vulnerable Contract</h2>
+
+<pre><code>contract Vault {
+
+    mapping(address => uint) public balances;
+
+    function withdraw() public {
+        uint amount = balances[msg.sender];
+
+        (bool ok,) = msg.sender.call{value: amount}("");
+
+        require(ok);
+
+        balances[msg.sender] = 0;
+    }
+}</code></pre>
+
+    <p>
+      Slither detects:
+    </p>
+
+    <pre><code>Reentrancy in Vault.withdraw()</code></pre>
+  </div>
+
+  <div class="card">
+    <h2>Custom Detector Example</h2>
+
+<pre><code>from slither.detectors.abstract_detector import AbstractDetector
+
+class MyDetector(AbstractDetector):
+
+    ARGUMENT = "my-detector"
+    HELP = "Detects custom issue"
+
+    def _detect(self):
+        results = []
+
+        for contract in self.slither.contracts:
+            for function in contract.functions:
+                pass
+
+        return results</code></pre>
+  </div>
+
+  <div class="card">
+    <h2>Operational Notes</h2>
+
+    <ul>
+      <li>Static analysis does not execute code.</li>
+      <li>False positives exist.</li>
+      <li>Always manually verify findings.</li>
+      <li>Combine with dynamic testing and invariant fuzzing.</li>
+      <li>Works extremely well with Foundry.</li>
+    </ul>
+
+    <div class="warning">
+      Slither is reconnaissance, not proof of exploitability.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Useful Workflow</h2>
+
+<pre><code># Compile contracts
+forge build
+
+# Run slither
+slither .
+
+# Export findings
+slither . --json results.json
+
+# Generate graphs
+slither . --print call-graph</code></pre>
+  </div>
+
+  <div class="card">
+    <h2>Official Resources</h2>
+
+    <ul>
+      <li>
+        <a href="https://github.com/crytic/slither">
+          GitHub Repository
+        </a>
+      </li>
+
+      <li>
+        <a href="https://github.com/crytic/slither/wiki">
+          Slither Wiki
+        </a>
+      </li>
+
+      <li>
+        <a href="https://secure-contracts.com">
+          Secure Contracts Knowledge Base
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</div>
+

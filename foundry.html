@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>foundry</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <a href="index.html"><H1>HOME</H1></a> <br>
+    Foundry is a fast, portable, and modular toolkit for Ethereum development. After installing Foundry, you have access to four tools:
+
+Tool	Purpose	
+forge	Build, test, debug, deploy, and verify smart contracts	
+cast	Interact with contracts, send transactions, and query chain data	
+anvil	Run a local Ethereum node with forking capabilities	
+chisel	Solidity REPL for rapid prototyping	
+
+<h4>installing: <code>curl -L https://foundry.paradigm.xyz | bash</code></h2> <br>
+    <h3><a href=https://www.getfoundry.sh/introduction/getting-started>Docs</a></h3> <br>
+
+
+  <h1>Foundry Core Commands</h1>
+
+  <h2>1. forge</h2>
+  <p>Compile contracts:</p>
+  <pre><code>forge build</code></pre>
+
+  <p>Run tests:</p>
+  <pre><code>forge test</code></pre>
+
+  <p>Deploy contract:</p>
+  <pre><code>
+forge create src/MyContract.sol:MyContract \
+  --rpc-url $RPC_URL \
+  --private-key $PRIVATE_KEY
+  </code></pre>
+
+  <hr>
+
+  <h2>2. cast</h2>
+  <p>Read block number:</p>
+  <pre><code>cast block-number --rpc-url $RPC_URL</code></pre>
+
+  <p>Call smart contract function:</p>
+  <pre><code>
+cast call $CONTRACT_ADDRESS \
+  "balanceOf(address)(uint256)" \
+  $USER_ADDRESS
+  </code></pre>
+
+  <p>Send transaction:</p>
+  <pre><code>
+cast send $CONTRACT_ADDRESS \
+  "transfer(address,uint256)" \
+  $TO 1000000000000000000 \
+  --private-key $PRIVATE_KEY
+  </code></pre>
+
+  <hr>
+
+  <h2>3. anvil</h2>
+  <p>Start local Ethereum node:</p>
+  <pre><code>anvil</code></pre>
+
+  <p>Fork mainnet:</p>
+  <pre><code>
+anvil --fork-url $RPC_URL
+  </code></pre>
+
+  <hr>
+
+  <h2>4. chisel</h2>
+  <p>Start Solidity REPL:</p>
+  <pre><code>chisel</code></pre>
+
+  <p>Example:</p>
+  <pre><code>
+&gt;&gt;&gt; uint x = 5;
+&gt;&gt;&gt; x * 2
+10
+  </code></pre>
+
+</body>
+</html>

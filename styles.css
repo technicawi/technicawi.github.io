@@ -1,0 +1,149 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#05070d;
+    color:#d7e1ff;
+    font-family:Consolas, monospace;
+    padding:40px;
+    overflow-x:hidden;
+}
+
+/* abyss glow layers */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at top left,#11224455,transparent 30%),
+        radial-gradient(circle at bottom right,#22004466,transparent 35%),
+        linear-gradient(to bottom,#04050a,#090d18);
+    z-index:-2;
+}
+
+/* grid overlay */
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size:40px 40px;
+    z-index:-1;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.title{
+    font-size:3rem;
+    margin-bottom:10px;
+    color:#8fb7ff;
+    text-shadow:0 0 15px #3d6cff;
+}
+
+.subtitle{
+    color:#7184aa;
+    margin-bottom:50px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(450px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(8,12,22,0.92);
+    border:1px solid rgba(98,130,255,0.15);
+    border-radius:18px;
+    padding:25px;
+    box-shadow:
+        0 0 30px rgba(0,0,0,0.6),
+        inset 0 0 25px rgba(70,100,255,0.05);
+    transition:0.25s ease;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    border-color:#4f7dff;
+    box-shadow:
+        0 0 35px rgba(55,110,255,0.25),
+        inset 0 0 30px rgba(100,120,255,0.08);
+}
+
+h2{
+    color:#8cb0ff;
+    margin-bottom:18px;
+    font-size:1.8rem;
+}
+
+p{
+    color:#8d9ab8;
+    margin:15px 0 10px;
+    line-height:1.6;
+}
+
+pre{
+    background:#03050a;
+    border:1px solid #1b2d55;
+    border-radius:12px;
+    padding:16px;
+    overflow-x:auto;
+    margin-top:10px;
+    margin-bottom:18px;
+}
+
+code{
+    color:#b9d4ff;
+    font-size:0.95rem;
+    line-height:1.7;
+}
+
+.command{
+    color:#7aa2ff;
+}
+
+.flag{
+    color:#d38fff;
+}
+
+.variable{
+    color:#7df0c7;
+}
+
+.comment{
+    color:#5c6a88;
+}
+
+.footer{
+    margin-top:60px;
+    text-align:center;
+    color:#52627f;
+    font-size:0.9rem;
+}
+
+/* scrollbar */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#060912;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#243b6b;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#3557a0;
+}
