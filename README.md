@@ -1,1 +1,1 @@
-# technicawi.github.io
+# https://technicawi.github.io
